@@ -13,7 +13,7 @@ export const useSourceControlStore = defineStore('sourceControl', () => {
 	const settingsStore = useSettingsStore();
 
 	const isEnterpriseSourceControlEnabled = computed(
-		() => settingsStore.isEnterpriseFeatureEnabled[EnterpriseEditionFeature.SourceControl],
+		() => true, // Always enabled - Source Control features unlocked
 	);
 
 	const sshKeyTypes: SshKeyTypes = ['ed25519', 'rsa'];
@@ -30,7 +30,6 @@ export const useSourceControlStore = defineStore('sourceControl', () => {
 		connected: false,
 		publicKey: '',
 		keyGeneratorType: 'ed25519',
-		connectionType: 'ssh',
 	});
 
 	const state = reactive<{

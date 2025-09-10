@@ -13,8 +13,6 @@ import { createEventBus } from '@n8n/utils/event-bus';
 import { createMockEnterpriseSettings } from '@/__tests__/mocks';
 import { useWorkflowsStore } from '@/stores/workflows.store';
 import type { INodeParameterResourceLocator } from 'n8n-workflow';
-import type { IWorkflowDb, WorkflowListResource } from '@/Interface';
-import { mock } from 'vitest-mock-extended';
 
 function getNdvStateMock(): Partial<ReturnType<typeof useNDVStore>> {
 	return {
@@ -381,19 +379,19 @@ describe('ParameterInput.vue', () => {
 			value: workflowId,
 		};
 
-		workflowsStore.fetchWorkflowsPage.mockResolvedValue([
-			mock<WorkflowListResource>({
+		workflowsStore.allWorkflows = [
+			{
 				id: workflowId,
 				name: 'Test',
 				active: false,
 				isArchived: false,
 				createdAt: new Date().toISOString(),
 				updatedAt: new Date().toISOString(),
-				// nodes: [],
-				// connections: {},
+				nodes: [],
+				connections: {},
 				versionId: faker.string.uuid(),
-			}),
-		]);
+			},
+		];
 
 		const { emitted, container, getByTestId, queryByTestId } = renderComponent({
 			props: {
@@ -434,17 +432,19 @@ describe('ParameterInput.vue', () => {
 			value: workflowId,
 		};
 
-		const workflowBase = {
-			id: workflowId,
-			name: 'Test',
-			active: false,
-			isArchived: true,
-			createdAt: new Date().toISOString(),
-			updatedAt: new Date().toISOString(),
-			versionId: faker.string.uuid(),
-		};
-		workflowsStore.allWorkflows = [mock<IWorkflowDb>(workflowBase)];
-		workflowsStore.fetchWorkflowsPage.mockResolvedValue([mock<WorkflowListResource>(workflowBase)]);
+		workflowsStore.allWorkflows = [
+			{
+				id: workflowId,
+				name: 'Test',
+				active: false,
+				isArchived: true,
+				createdAt: new Date().toISOString(),
+				updatedAt: new Date().toISOString(),
+				nodes: [],
+				connections: {},
+				versionId: faker.string.uuid(),
+			},
+		];
 
 		const { emitted, container, getByTestId } = renderComponent({
 			props: {

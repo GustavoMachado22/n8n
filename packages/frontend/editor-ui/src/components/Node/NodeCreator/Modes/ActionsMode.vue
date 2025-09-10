@@ -28,7 +28,7 @@ import type { IDataObject } from 'n8n-workflow';
 import { useTelemetry } from '@/composables/useTelemetry';
 import { useI18n } from '@n8n/i18n';
 import { useNodeCreatorStore } from '@/stores/nodeCreator.store';
-import OrderSwitcher from './../OrderSwitcher.vue';
+import OrderSwitcher from '../OrderSwitcher.vue';
 import { getActiveViewCallouts, isNodePreviewKey } from '../utils';
 
 import CommunityNodeInfo from '../Panel/CommunityNodeInfo.vue';

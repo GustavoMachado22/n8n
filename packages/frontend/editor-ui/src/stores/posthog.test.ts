@@ -20,7 +20,6 @@ export const DEFAULT_POSTHOG_SETTINGS: FrontendSettings['posthog'] = {
 };
 const CURRENT_USER_ID = '1';
 const CURRENT_INSTANCE_ID = '456';
-const CURRENT_VERSION_CLI = '1.100.0';
 
 function setSettings(overrides?: Partial<FrontendSettings>) {
 	useSettingsStore().setSettings({
@@ -31,7 +30,6 @@ function setSettings(overrides?: Partial<FrontendSettings>) {
 	} as FrontendSettings);
 
 	useRootStore().setInstanceId(CURRENT_INSTANCE_ID);
-	useRootStore().setVersionCli(CURRENT_VERSION_CLI);
 }
 
 function setCurrentUser() {
@@ -125,7 +123,6 @@ describe('Posthog store', () => {
 			const userId = `${CURRENT_INSTANCE_ID}#${CURRENT_USER_ID}`;
 			expect(window.posthog?.identify).toHaveBeenCalledWith(userId, {
 				instance_id: CURRENT_INSTANCE_ID,
-				version_cli: CURRENT_VERSION_CLI,
 			});
 		});
 

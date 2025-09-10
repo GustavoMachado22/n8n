@@ -81,11 +81,7 @@ export const usePostHog = defineStore('posthog', () => {
 	const identify = () => {
 		const instanceId = rootStore.instanceId;
 		const user = usersStore.currentUser;
-		const versionCli = rootStore.versionCli;
-		const traits: Record<string, string | number> = {
-			instance_id: instanceId,
-			version_cli: versionCli,
-		};
+		const traits: Record<string, string | number> = { instance_id: instanceId };
 
 		if (user && typeof user.createdAt === 'string') {
 			traits.created_at_timestamp = new Date(user.createdAt).getTime();

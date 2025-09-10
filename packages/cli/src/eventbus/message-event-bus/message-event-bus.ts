@@ -16,7 +16,7 @@ import { License } from '@/license';
 import { Publisher } from '@/scaling/pubsub/publisher.service';
 
 import { ExecutionRecoveryService } from '../../executions/execution-recovery.service';
-import type { EventMessageTypes } from '../event-message-classes/';
+import type { EventMessageTypes } from '../event-message-classes';
 import {
 	EventMessageAiNode,
 	type EventMessageAiNodeOptions,

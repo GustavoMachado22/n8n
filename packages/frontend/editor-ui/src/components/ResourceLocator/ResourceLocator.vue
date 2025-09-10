@@ -912,7 +912,7 @@ function removeOverride() {
 	>
 		<ResourceLocatorDropdown
 			ref="dropdownRef"
-			:model-value="modelValue"
+			:model-value="modelValue ? modelValue.value : ''"
 			:show="resourceDropdownVisible"
 			:filterable="isSearchable"
 			:filter-required="requiresSearchFilter"

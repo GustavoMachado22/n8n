@@ -4,7 +4,7 @@ import { EditorView, type ViewUpdate } from '@codemirror/view';
 
 import { useNDVStore } from '@/stores/ndv.store';
 import { useRootStore } from '@n8n/stores/useRootStore';
-import { useTelemetry } from '../composables/useTelemetry';
+import { useTelemetry } from './useTelemetry';
 import type { Compartment } from '@codemirror/state';
 import debounce from 'lodash/debounce';
 

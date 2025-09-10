@@ -128,9 +128,8 @@ describe('ResourceLocator', () => {
 		await waitFor(() => {
 			expect(nodeTypesStore.getResourceLocatorResults).toHaveBeenCalled();
 		});
-		// Expect the items to be rendered, including the cached value from
-		// TEST_MODEL_VALUE
-		expect(getAllByTestId('rlc-item')).toHaveLength(TEST_ITEMS.length + 1);
+		// Expect the items to be rendered
+		expect(getAllByTestId('rlc-item')).toHaveLength(TEST_ITEMS.length);
 		// We should be getting one item for each result
 		TEST_ITEMS.forEach((item) => {
 			expect(getByText(item.name)).toBeInTheDocument();
@@ -287,9 +286,7 @@ describe('ResourceLocator', () => {
 			expect(nodeTypesStore.getResourceLocatorResults).toHaveBeenCalled();
 		});
 
-		// Expect the items to be rendered, including the cached value from
-		// TEST_MODEL_VALUE
-		expect(getAllByTestId('rlc-item')).toHaveLength(TEST_ITEMS.length + 1);
+		expect(getAllByTestId('rlc-item')).toHaveLength(TEST_ITEMS.length);
 		TEST_ITEMS.forEach((item) => {
 			expect(getByText(item.name)).toBeInTheDocument();
 		});
